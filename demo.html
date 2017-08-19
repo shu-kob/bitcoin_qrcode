@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="jquery.qrcode.min.js"></script>
+</head>
+<body>
+  <br>
+  <div id="qrcode" align="center">
+  <script>
+  var amount = 0.001;
+//    $("#my-form [name=amount]").keydown(){
+//  var amount = $("#my-form [name=amount]").val();
+// });
+
+  var address = "1ZpMxPYvMu1TNnS9Cn1EbfRJF4Nt1t5yN";
+
+$('p').text("bitcoin:" + address);
+$('#qrcode').qrcode({text:"bitcoin:" + address });
+
+
+$(function(){
+  //keyup()でキーを入力するたびに発動
+  $('input[type="number"]').keyup(function() {
+    $('#qrcode').empty();
+    var address = "1ZpMxPYvMu1TNnS9Cn1EbfRJF4Nt1t5yN";
+    //入力したvalue値を変数に格納
+    var amount = $(this).val();
+    var amount_text = "?amount=" + amount;
+    if (amount > 0){
+    address = address + amount_text;
+
+  }
+
+    //選択したvalue値をp要素に出力
+    $('p').text("bitcoin:" + address);
+
+    $('#qrcode').qrcode({text:"bitcoin:" + address});
+  });
+});
+
+</script>
+  </div>
+  <div id="qrcode2" align="center">
+    <script>
+
+    </script>
+    <font size="5" ><p>bitcoin:1ZpMxPYvMu1TNnS9Cn1EbfRJF4Nt1t5yN</p></font>
+  </div>
+  <br><br>
+  <form id="my-form" align="center">
+<font size="5" >Amount:<input type="number" name="amount" />BTC</font>
+</form>
+        <br>
+
+</body>
+</html>
